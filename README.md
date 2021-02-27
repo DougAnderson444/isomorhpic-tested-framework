@@ -25,3 +25,7 @@ Then pass  `import { expect } from '@esm-bundle/chai'` for the browser tests. Us
 ```
 npm run test
 ```
+
+## Travis CI
+
+Should run in Continuous Integration as the web-runner is headless browser.
