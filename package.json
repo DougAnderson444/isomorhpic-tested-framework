@@ -1,0 +1,36 @@
+{
+  "name": "isomorhpic-tested-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild index.js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=bundle.js",
+    "test:node": "mocha 'test/node.spec.js' --require esm",
+    "test:web": "web-test-runner \"test/web.test.js\" --node-resolve  --coverage",
+    "test": "npm run test:node && npm run test:web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DougAnderson444/isomorhpic-tested-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DougAnderson444/isomorhpic-tested-framework/issues"
+  },
+  "homepage": "https://github.com/DougAnderson444/isomorhpic-tested-framework#readme",
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.0",
+    "@web/test-runner": "^0.12.15",
+    "chai": "^4.3.0",
+    "esm": "^3.2.25",
+    "mocha": "^8.3.0"
+  },
+  "engines": {
+    "node": ">=0.14.x"
+  },
+  "dependencies": {
+    "esbuild": "^0.8.53"
+  }
+}
