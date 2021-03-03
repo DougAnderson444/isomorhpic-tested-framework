@@ -1,60 +1,61 @@
-# Framework for both the Browser and Nodejs
+# Testing Framework for both the Browser and Nodejs
+
+I was building a library for both Nodejs and the Browser and needed a setup that ensures the same code and the same tests work in both.
+
+## Use it
+
+Clone this repo 
+
+`npm install`
+
+`npm run test`
 
 ## Testing Setup
 
 Install:
 - [Mocha](https://mochajs.org/) Test Framework
-- [Chai](https://www.npmjs.com/package/chai) Assertion Library
-- [esm](https://github.com/standard-things/esm) To use ES Modules in Nodejs with Mocha, `mocha --require esm`
-- [Web Test Runner](https://modern-web.dev/docs/test-runner/overview/) To run the same tests in the browser 
+- [Chai](https://www.npmjs.com/package/chai) Assertion Library (Expect)
+- [Karma](https://karma-runner.github.io/latest/index.html) To run the tests in the browser 
 
 ## Test Config
 
-Put all the common tests in `basic.spec.js`
+Put all the common tests in `test.js`. Karma will bundle it using webpack and `karma-webpack`.
 
 ```js
-import { sum } from '../src/index.js'
+const { expect } = require('chai')
+const { sum, parseKey } = require('../')
 
-export default (expect) => {
-  describe('Array', function () {
-    it('sums up 2 numbers', () => {
+const isNode = (typeof window === 'undefined')
+
+describe('Array', () => {
+  describe('Tests', () => {
+    it('should sum', () => {
       expect(sum(1, 1)).to.equal(2)
-      expect(sum(3, 12)).to.equal(15)
+    })
+    it('should add', () => {
+      expect(4).to.equal(4)
+    })
+    it('should parse', async () => {
+      const parsed = await parseKey()
+      console.log(parsed)
+      if (isNode) { expect(parsed).to.be.a('object') } // Node KeyObject
+      else {
+        // Browser
+        expect(parsed).to.be.a('CryptoKey')
+      }
+    })
+    it('should fail', () => {
+      expect(3).to.equal(4)
     })
   })
-}
-```
-
-### Node Test Config
-
-Then pass  `import { expect } from 'chai'` for the node tests. Uses Chai for Node.
-
-```js
-import tests from './basic.spec.js'
-import { expect } from 'chai' // <------ Use regular Chai for node env
-
-tests(expect)
-```
-### Browser Test Config
-
-Then pass  `import { expect } from '@esm-bundle/chai'` for the browser tests. Uses Chai for the browser testing environment.
-
-```js
-import tests from './basic.spec.js'
-import { expect } from '@esm-bundle/chai' // <------ Use esm-Chai for browser env
-
-tests(expect)
+})
 ```
 
 ## Run Tests
 
+Karma will build everything with webpack then run the tests.
+
 ```
-"test:node": "mocha 'test/node.spec.js' --require esm",
-
-"test:web": "web-test-runner \"test/web.test.js\" --node-resolve",
-
-"test": "npm run test:node && npm run test:web"
-
 npm run test
 ```
 
@@ -62,11 +63,12 @@ npm run test
 
 Should run in Continuous Integration as the web-runner is headless browser.
 
+`.travis.yml`
+
 ## Building for Production
 
-Need to bundle for the browser for production
+Need to bundle for the browser for production!
 
-browserify, webpack, rollup, or esbuild?
+All the choices: Browserify, webpack, rollup, or esbuild?
 
-Rollup: Doesnt resolve "browser" field in panva/jose
-
+Rollup: Doesnt resolve "browser" field in panva/jose subpaths, so I went with Webpack.

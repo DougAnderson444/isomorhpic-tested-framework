@@ -113,7 +113,7 @@ eval("/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harm
   \**********************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { default: parseJwk } = __webpack_require__(/*! jose/jwk/parse */ \"./node_modules/jose/dist/browser/jwk/parse.js\")\r\n\r\nmodule.exports.parseKey = async () => {\r\n  const ecPrivateKey = await parseJwk({\r\n    alg: 'ES256',\r\n    crv: 'P-256',\r\n    kty: 'EC',\r\n    d: 'VhsfgSRKcvHCGpLyygMbO_YpXc7bVKwi12KQTE4yOR4',\r\n    x: 'ySK38C1jBdLwDsNWKzzBHqKYEE5Cgv-qjWvorUXk9fw',\r\n    y: '_LeQBw07cf5t57Iavn4j-BqJsAD1dpoz8gokd3sBsOo'\r\n  })\r\n  return ecPrivateKey\r\n}\r\n\r\nmodule.exports.sum = (a, b) => {\r\n  return a + b\r\n}\r\n\n\n//# sourceURL=webpack://hypnsDidManager/./src/index.js?");
+eval("const { default: parseJwk } = __webpack_require__(/*! jose/jwk/parse */ \"./node_modules/jose/dist/browser/jwk/parse.js\")\r\n\r\nmodule.exports.parseKey = async (jwt) => {\r\n  const ecPrivateKey = await parseJwk(jwt)\r\n  return ecPrivateKey\r\n}\r\n\r\nmodule.exports.sum = (a, b) => {\r\n  return a + b\r\n}\r\n\n\n//# sourceURL=webpack://hypnsDidManager/./src/index.js?");
 
 /***/ })
 
