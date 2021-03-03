@@ -2,12 +2,14 @@
   "name": "isomorhpic-tested-framework",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
+  "browser": "dist/index.browser.js",
   "scripts": {
-    "build": "esbuild index.js --bundle --minify --sourcemap --target=chrome58,firefox57,safari11,edge16 --outfile=bundle.js",
-    "test:node": "mocha 'test/node.spec.js' --require esm",
-    "test:web": "web-test-runner \"test/web.test.js\" --node-resolve  --coverage",
-    "test": "npm run test:node && npm run test:web"
+    "build": "webpack",
+    "test:node": "mocha test/test.js --require esm",
+    "test:web:karma": "karma start --single-run --browsers ChromeHeadless",
+    "test": "npm run test:node && npm run test:web:karma",
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,16 +23,23 @@
   },
   "homepage": "https://github.com/DougAnderson444/isomorhpic-tested-framework#readme",
   "devDependencies": {
-    "@esm-bundle/chai": "^4.3.0",
-    "@web/test-runner": "^0.12.15",
     "chai": "^4.3.0",
+    "esbuild": "^0.8.54",
     "esm": "^3.2.25",
-    "mocha": "^8.3.0"
+    "karma": "^6.1.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-webpack": "^5.0.0",
+    "mocha": "^8.3.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   },
   "engines": {
     "node": ">=0.14.x"
   },
   "dependencies": {
-    "esbuild": "^0.8.53"
+    "jose": "^3.6.2"
   }
 }
