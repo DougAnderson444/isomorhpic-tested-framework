@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, ''),
     filename: pkg.browser,
-    library: 'hypnsDidManager',
+    library: 'testing',
     libraryTarget: 'umd'
   },
   resolve: {
@@ -20,6 +20,7 @@ module.exports = {
     },
     extensions: ['.tsx', '.ts', '.js'],
     fallback: {
+      // webpack 5 stuff
       // crypto: require.resolve('crypto-browserify'),
       // process: require.resolve('process/browser'),
       // stream: require.resolve('stream-browserify'),
