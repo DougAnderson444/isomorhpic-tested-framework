@@ -29,23 +29,9 @@ module.exports = function (config) {
       // Do NOT specify the entry option
       // webpack watches dependencies
 
-      // webpack configuration
-      resolve: {
-        mainFields: ['browser', 'module', 'main'],
-        alias: {
-          process: 'process/browser'
-        },
-        extensions: ['.tsx', '.ts', '.js'],
-        fallback: {
-          // crypto: require.resolve('crypto-browserify'),
-          // process: require.resolve('process/browser'),
-          // stream: require.resolve('stream-browserify'),
-          // assert: require.resolve('assert/'),
-          // url: require.resolve('url/'),
-          // buffer: require.resolve('buffer/'),
-          // events: require.resolve('events/')
-        }
-      }
+      // any additional webpack configuration
+      // default is https://github.com/ryanclark/karma-webpack#default-webpack-configuration
+
     }
   })
 }

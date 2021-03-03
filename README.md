@@ -38,8 +38,9 @@ describe('Array', () => {
     it('should parse', async () => {
       const parsed = await parseKey()
       console.log(parsed)
-      if (isNode) { expect(parsed).to.be.a('object') } // Node KeyObject
-      else {
+       if (isNode) {
+        expect(parsed).to.be.a('object') // Node KeyObject
+      } else {
         // Browser
         expect(parsed).to.be.a('CryptoKey')
       }
