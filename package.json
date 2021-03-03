@@ -24,8 +24,6 @@
   "homepage": "https://github.com/DougAnderson444/isomorhpic-tested-framework#readme",
   "devDependencies": {
     "chai": "^4.3.0",
-    "esbuild": "^0.8.54",
-    "esm": "^3.2.25",
     "karma": "^6.1.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
