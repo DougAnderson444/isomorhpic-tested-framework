@@ -22,7 +22,6 @@ describe('Array', () => {
     })
     it('should parse', async () => {
       const parsed = await parseKey(jwt)
-      console.log(parsed)
       if (isNode) {
         expect(parsed).to.be.a('object') // Node KeyObject
       } else {
