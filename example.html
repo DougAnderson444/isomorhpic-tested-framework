@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Using UMD in the Browser</title>
+    <script src="dist/index.browser.js"></script>
+</head>
+
+<body>
+
+    This page takes an object and puts it through the Universal Module Definition (UMD) bundled by webpack,
+    and uses it to parse a key. The output is printed in the console log.
+    <script>
+        /* HOW TO USE myFunction from mymodule.js ??? */
+        const jwt = {
+            alg: 'ES256',
+            crv: 'P-256',
+            kty: 'EC',
+            d: 'VhsfgSRKcvHCGpLyygMbO_YpXc7bVKwi12KQTE4yOR4',
+            x: 'ySK38C1jBdLwDsNWKzzBHqKYEE5Cgv-qjWvorUXk9fw',
+            y: '_LeQBw07cf5t57Iavn4j-BqJsAD1dpoz8gokd3sBsOo'
+        }
+        /* Answer: */
+        testing.parseKey(jwt).then((parsedKey) => {
+
+            console.log({parsedKey})
+        })
+    </script>
+</body>
+
+</html>

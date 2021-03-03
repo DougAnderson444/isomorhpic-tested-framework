@@ -10,6 +10,8 @@ Clone this repo
 
 `npm run test`
 
+Also, you can open un `index.html` and check the console to see the UMD output of the same thing.
+
 ## Testing Setup
 
 Install:
